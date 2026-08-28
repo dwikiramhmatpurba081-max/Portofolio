@@ -1,0 +1,384 @@
+/* ============================================================
+   PORTOFOLIO — TEMA "CODE EDITOR"
+   Semua warna, font, dan ukuran ada di sini.
+   Ubah nilai di bawah untuk kustomisasi tampilan.
+   ============================================================ */
+
+:root {
+  /* --- Palet warna --- */
+  --bg-editor:      #12141c;   /* latar utama, biru gelap keunguan */
+  --bg-panel:       #191c26;   /* panel kode */
+  --bg-sidebar:     #0d0f16;   /* sidebar kiri */
+  --bg-card:        #1e2230;   /* kartu project / tag */
+  --border-col:     #2b3040;
+
+  --text-main:      #e7e6f0;   /* teks utama */
+  --text-dim:       #7b8096;   /* teks redup / komentar */
+  --text-gutter:    #444a5e;   /* nomor baris */
+
+  --accent-blue:    #5eb1ff;   /* keyword */
+  --accent-amber:   #f2b544;   /* class name / highlight */
+  --accent-green:   #8fd6a0;   /* string */
+  --accent-pink:    #ff9ecb;   /* angka */
+
+  /* --- Tipografi --- */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+
+  /* --- Radius & efek --- */
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.code-heading {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+body {
+  background: var(--bg-editor);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ================= TITLEBAR ================= */
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-col);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.dot.red    { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green  { background: #28c840; }
+
+.titlebar-name {
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 6px 6px 0 0;
+  color: var(--text-dim);
+  border: 1px solid transparent;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.tab:hover { color: var(--text-main); }
+
+.tab.active {
+  color: var(--accent-amber);
+  background: var(--bg-panel);
+  border-color: var(--border-col);
+}
+
+/* ================= LAYOUT ================= */
+.editor-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: calc(100vh - 96px);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-col);
+  padding: 24px 16px;
+}
+
+.sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.file-tree { list-style: none; }
+
+.file-tree li {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 6px 0;
+  color: var(--text-dim);
+}
+
+.file-tree .folder { color: var(--accent-amber); margin-bottom: 6px; }
+
+.file-tree a {
+  color: var(--text-dim);
+  padding-left: 16px;
+  display: block;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.file-tree a:hover {
+  color: var(--accent-blue);
+  background: var(--bg-panel);
+}
+
+/* ================= CODE PANEL ================= */
+.code-panel {
+  padding: 40px 48px 80px;
+  max-width: 980px;
+}
+
+.block {
+  display: flex;
+  gap: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  scroll-margin-top: 90px;
+}
+
+.gutter {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-gutter);
+  user-select: none;
+  padding-top: 3px;
+  gap: 8px;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.code p { margin-bottom: 8px; }
+.code .indent { padding-left: 24px; }
+
+.kw   { color: var(--accent-blue); font-weight: 600; }
+.cls  { color: var(--accent-amber); font-weight: 700; }
+.str  { color: var(--accent-green); }
+.num  { color: var(--accent-pink); }
+.comment { color: var(--text-dim); font-style: italic; }
+
+/* ===== About section specifics ===== */
+.about-flex {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 12px 0 12px 24px;
+  flex-wrap: wrap;
+}
+
+.avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent-amber);
+  background: var(--bg-card);
+  position: relative;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-placeholder {
+  display: none; /* muncul otomatis kalau foto.jpg tidak ditemukan */
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  color: var(--text-dim);
+  font-family: var(--font-sans);
+}
+
+.avatar-placeholder span { font-size: 1.8rem; }
+.avatar-placeholder small { font-size: 0.68rem; line-height: 1.3; }
+.avatar-placeholder b { color: var(--accent-amber); }
+
+.avatar-caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.about-text { flex: 1; min-width: 240px; }
+
+/* ===== Skills ===== */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-left: 24px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-col);
+  color: var(--accent-blue);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ===== Projects ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-amber);
+}
+
+.project-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  margin: 6px 0 8px;
+  color: var(--text-main);
+}
+
+.project-card p {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ===== Contact ===== */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  padding-left: 24px;
+}
+
+.contact-btn {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--accent-blue);
+  color: #0d0f16;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ================= STATUSBAR ================= */
+.statusbar {
+  background: var(--accent-blue);
+  color: #0d0f16;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  gap: 24px;
+  padding: 6px 20px;
+  flex-wrap: wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 800px) {
+  .editor-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    display: flex;
+    overflow-x: auto;
+    padding: 12px 16px;
+    gap: 16px;
+  }
+  .sidebar-title { display: none; }
+  .file-tree { display: flex; gap: 12px; }
+  .file-tree .folder { display: none; }
+  .code-panel { padding: 24px 20px 60px; }
+  .block { flex-direction: column; padding: 22px; }
+  .gutter { flex-direction: row; gap: 14px; }
+  .about-flex { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
