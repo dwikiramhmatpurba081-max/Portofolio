@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio — Dwiki Rahmat Purba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="titlebar">
+  <div class="titlebar-left">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="titlebar-name">portofolio.java — VS Code</span>
+  </div>
+  <nav class="tabs">
+    <a href="#about" class="tab active">about.java</a>
+    <a href="#skills" class="tab">skills.java</a>
+    <a href="#projects" class="tab">projects.java</a>
+    <a href="#contact" class="tab">contact.java</a>
+  </nav>
+</header>
+
+<div class="editor-shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-title">EXPLORER</div>
+    <ul class="file-tree">
+      <li class="folder">📁 portofolio</li>
+      <li class="file"><a href="#about">📄 about.java</a></li>
+      <li class="file"><a href="#skills">📄 skills.java</a></li>
+      <li class="file"><a href="#projects">📄 projects.java</a></li>
+      <li class="file"><a href="#contact">📄 contact.java</a></li>
+    </ul>
+  </aside>
+
+  <!-- ================= MAIN CODE PANEL ================= -->
+  <main class="code-panel">
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="block">
+      <div class="gutter">
+        <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span>
+        <span>06</span><span>07</span><span>08</span><span>09</span><span>10</span>
+      </div>
+      <div class="code">
+        <p><span class="kw">class</span> <span class="cls">Mahasiswa</span> {</p>
+
+        <div class="about-flex">
+          <div class="avatar-wrap">
+            <div class="avatar">
+              <img id="fotoProfil" src="foto.jpg" alt="Foto Profil"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="avatar-placeholder">
+                <span>📷</span>
+                <small>Ganti file<br><b>foto.jpg</b><br>dengan fotomu</small>
+              </div>
+            </div>
+            <span class="avatar-caption">// foto.jpg</span>
+          </div>
+
+          <div class="about-text">
+            <p class="indent"><span class="kw">String</span> nama = <span class="str">"Dwiki Rahmat Purba"</span>;</p>
+            <p class="indent"><span class="kw">String</span> nim = <span class="str">"4252550011"</span>;</p>
+            <p class="indent"><span class="kw">String</span> kampus = <span class="str">"Universitas Negeri Medan"</span>;</p>
+            <p class="indent"><span class="kw">String</span> prodi = <span class="str">"S1 Ilmu Komputer"</span>;</p>
+            <p class="indent"><span class="kw">int</span> angkatan = <span class="num">2025</span>;</p>
+            <p class="indent"><span class="kw">String</span> asalSekolah = <span class="str">"SMAN 1 Siantar Narumonda"</span>;</p>
+            <p class="indent"><span class="kw">String</span> alamat = <span class="str">"Porsea, Kab. Toba, Sumatera Utara"</span>;</p>
+            <p class="indent"><span class="kw">String[]</span> hobi = {
+              <span class="str">"Main game"</span>, <span class="str">"Mancing"</span>, <span class="str">"Membaca"</span>, <span class="str">"Main bola"</span>
+            };</p>
+
+            <p class="comment indent">/**<br>
+            &nbsp;* Halo! Aku mahasiswa Ilmu Komputer yang lagi belajar<br>
+            &nbsp;* pemrograman Java, dasar-dasar matematika diskrit, dan<br>
+            &nbsp;* aljabar linear. Suka ngoprek project kecil-kecilan dan<br>
+            &nbsp;* eksplorasi hal baru di dunia teknologi.<br>
+            &nbsp;*/</p>
+          </div>
+        </div>
+
+        <p>}</p>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="block">
+      <div class="gutter">
+        <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span>
+        <span>06</span><span>07</span><span>08</span><span>09</span>
+      </div>
+      <div class="code">
+        <p><span class="kw">class</span> <span class="cls">Skills</span> {</p>
+        <p class="indent"><span class="kw">String[]</span> bahasaPemrograman = {
+          <span class="str">"Java"</span>, <span class="str">"Python"</span>, <span class="str">"C++"</span>
+        };</p>
+        <p class="indent"><span class="kw">String[]</span> webDasar = {
+          <span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"JavaScript"</span>
+        };</p>
+        <p class="indent"><span class="kw">String[]</span> lainnya = {
+          <span class="str">"Git & GitHub"</span>, <span class="str">"VS Code"</span>, <span class="str">"MySQL"</span>
+        };</p>
+        <p>}</p>
+
+        <div class="skill-tags">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Git</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="block">
+      <div class="gutter">
+        <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span>
+        <span>06</span><span>07</span><span>08</span>
+      </div>
+      <div class="code">
+        <p><span class="kw">class</span> <span class="cls">Projects</span> {</p>
+        <p class="comment indent">// daftar project yang pernah dikerjakan</p>
+        <p>}</p>
+
+        <div class="project-grid">
+          <div class="project-card">
+            <span class="project-tag">#01</span>
+            <h3>MatriCa</h3>
+            <p>Kalkulator matriks untuk mata kuliah Aljabar Linear dan Geometri (IF2123) — mendukung operasi dasar hingga determinan.</p>
+          </div>
+          <div class="project-card">
+            <span class="project-tag">#02</span>
+            <h3>Kalkulator Matematika Web</h3>
+            <p>Aplikasi web sederhana untuk menghitung berbagai operasi matematika secara cepat dan interaktif.</p>
+          </div>
+          <div class="project-card">
+            <span class="project-tag">#03</span>
+            <h3>Kalkulator Kecepatan Charging</h3>
+            <p>Tools untuk mengestimasi waktu dan kecepatan pengisian daya smartphone berdasarkan spesifikasi baterai.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="block">
+      <div class="gutter">
+        <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span>
+      </div>
+      <div class="code">
+        <p><span class="kw">class</span> <span class="cls">Contact</span> {</p>
+        <p class="indent"><span class="kw">String</span> email = <span class="str">"dwikiramhmatpurba@gmail.com"</span>;</p>
+        <p class="comment indent">// tambahin github / linkedin di sini kalau udah punya</p>
+        <p>}</p>
+
+        <div class="contact-links">
+          <a href="mailto:dwikiramhmatpurba@gmail.com" class="contact-btn">✉ Email</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span>● main</span>
+  <span>UTF-8</span>
+  <span>Java</span>
+  <span>Dibuat dengan ❤ pakai HTML &amp; CSS</span>
+</footer>
+
+</body>
+</html>
